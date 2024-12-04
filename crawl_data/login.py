@@ -18,7 +18,7 @@ def login(email, password):
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     # driver = webdriver.Chrome(service=service, options=chrome_options)
 
-    driver.set_window_size(1000, 800)
+    driver.set_window_size(1350, 720)
     driver.set_window_position(10, 10)
 
     driver.implicitly_wait(5)
@@ -33,7 +33,5 @@ def login(email, password):
     password_input.send_keys(password)
 
     password_input.send_keys(Keys.ENTER)
-
-    time.sleep(random.randint(8, 10))
 
     return driver

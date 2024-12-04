@@ -1,0 +1,7 @@
+numpy==2.0.1
+pandas==2.2.2
+PyAutoGUI==0.9.54
+requests==2.32.3
+selenium==4.23.1
+webdriver-manager==4.0.2
+python-dotenv

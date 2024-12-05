@@ -9,16 +9,16 @@ import time
 from webdriver_manager.chrome import ChromeDriverManager
 
 def login(email, password):
-    # chrome = r"D:\post_facebook\chromedriver-win64\chromedriver.exe"
+    chrome = r"./chromedriver-linux64/chromedriver"
     facebook_url = "https://www.facebook.com"
-    # service = Service(chrome)
-    # 
+    service = Service(chrome)
+    
     chrome_options = Options()
     chrome_options.add_argument("--disable-notifications")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-    # driver = webdriver.Chrome(service=service, options=chrome_options)
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
 
-    driver.set_window_size(1350, 720)
+    driver.set_window_size(1800, 1200)
     driver.set_window_position(10, 10)
 
     driver.implicitly_wait(5)

@@ -2,7 +2,7 @@ import random
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import time
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 
 # """ Lấy content của 1 post """
 # def get_post(driver):
@@ -29,16 +29,17 @@ def get_posts(driver, url):
     total_height = driver.execute_script("return document.body.scrollHeight")
 
     # Tạo vòng lặp để lướt xuống dần dần
-    for i in range(1, 2000, 500):
+    for i in range(1, 10000, 500):
         driver.execute_script("window.scrollTo(0, {});".format(i))
         time.sleep(1)
     driver.execute_script("window.scrollTo(0, {});".format(1))
 
-    elements = driver.find_elements(By.XPATH, '//span[@dir="auto" and @class="x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h"]')
+    elements = driver.find_elements(By.XPATH, '//span[@class="x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h"]')
     # elements = driver.find_elements(By.CLASS_NAME, 'x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x3x7a5m x6prxxf xvq8zen xo1l8bm xzsf02u x1yc453h')
     time.sleep(random.randint(3, 5))
 
-    print(elements[5].get_attribute('outerHTML'))
+    print(len(elements))
+    # print(elements[5].get_attribute('outerHTML'))
 
     # dom_content = elements[10].get_attribute('outerHTML')
 

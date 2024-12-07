@@ -10,7 +10,7 @@ import os
 def main():
   load_dotenv()
 
-  df_pages = pd.read_csv(r'./pages.csv')
+  df_pages = pd.read_csv(r'./posts.csv')
 
   driver = login(os.getenv("EMAIL_FACEBOOK"),os.getenv("PASSWORD_FACEBOOK"))
   time.sleep(random.randint(8, 10))
@@ -18,11 +18,8 @@ def main():
 
   # for page_index in range(df_pages.shape[0]):
   for page_index in range(1):
-    name = df_pages["name"][page_index]
     url = df_pages["url"][page_index]
-
-    print( ">> Content page", name)
-
+    
     get_posts(driver, url)
 
 

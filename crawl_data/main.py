@@ -2,7 +2,7 @@ import time
 import pandas as pd
 from dotenv import load_dotenv
 from login import login
-from get_data import get_posts
+from get_data import get_comments
 import random
 import os
 
@@ -10,17 +10,16 @@ import os
 def main():
   load_dotenv()
 
-  df_pages = pd.read_csv(r'./posts.csv')
+  df_posts = pd.read_csv(r'./posts.csv')
 
   driver = login(os.getenv("EMAIL_FACEBOOK"),os.getenv("PASSWORD_FACEBOOK"))
   time.sleep(random.randint(8, 10))
   print(">> Login successful")
 
-  # for page_index in range(df_pages.shape[0]):
-  for page_index in range(1):
-    url = df_pages["url"][page_index]
+  for page_index in range(2, df_posts.shape[0]):
+    url = df_posts["url"][page_index]
     
-    get_posts(driver, url)
+    get_comments(driver, url)
 
 
   time.sleep(10)

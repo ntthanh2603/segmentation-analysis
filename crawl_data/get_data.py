@@ -31,7 +31,7 @@ def get_comments(driver, url):
 
 
     scroll = -1000
-    scroll_times = 100
+    scroll_times = 150
 
     for _ in range(scroll_times):
         pyautogui.scroll(scroll)

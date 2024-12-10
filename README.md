@@ -6,10 +6,10 @@
 <br> https://www.facebook.com/share/p/17vXHXcfrG/,
 <br> https://www.facebook.com/share/p/15jCoCgfo3/ .
 - Bài toán của bọn em là phân tích cảm xúc của các bình luận.
-- Kiến trúc: CNN for text, Bi RNN và transformer.
+- Kiến trúc: Bi RNN và Transformer.
 - Danh sách thành viên và công việc:
   - Nguyễn Tuấn Thành - 22022624: Dùng selenium và pyautogui để thu thập và dùng pandas để trực quan và làm sạch dữ liệu.
-  - Vũ Đình Thọ - 22022580: Xây dựng kiến trúc và huấn luyện model CNN for text và transformer.
+  - Vũ Đình Thọ - 22022580: Xây dựng kiến trúc và huấn luyện model Transformer.
   - Đinh Văn Sinh - 22022625: Viết báo cáo, tổng hợp nội dung.
   - Nguyễn Mạnh Hùng - 22022623: Xây dựng kiến trúc và huấn luyện model dùng Bi RNN.
   - Nguyễn Công Thành - 22022630: Gán nhãn dữ liệu.

@@ -13,3 +13,16 @@
 - Đinh Văn Sinh - 22022625: Viết báo cáo, tổng hợp nội dung.
 - Nguyễn Mạnh Hùng - 22022623: Xây dựng kiến trúc và huấn luyện model dùng Bi RNN.
 - Nguyễn Công Thành - 22022630: Gán nhãn dữ liệu.
+
+##### Khi crawl dat thì tạo file .env ở root dự án rồi thêm 2 biến có dạng:
+```
+EMAIL_FACEBOOK = <Email or SDT>
+PASSWORD_FACEBOOK = <Password>
+```
+##### Rồi dùng các lệnh sau để crawl data:
+```
+cd crawl_data
+```
+```
+python3 main.py
+```

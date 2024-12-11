@@ -1,10 +1,5 @@
 ## Final project segmentation-analysis
- - Data là các bình luận của các bài viết sau:
-<br> https://www.facebook.com/share/p/14DqtuJaps/,
-<br> https://www.facebook.com/share/p/1AkoVURG8j/,
-<br> https://www.facebook.com/share/p/1H9PTdntXR/,
-<br> https://www.facebook.com/share/p/17vXHXcfrG/,
-<br> https://www.facebook.com/share/p/15jCoCgfo3/ .
+- Data là các bình luận của các bài viết trên facebook.
 - Bài toán của bọn em là phân tích cảm xúc của các bình luận.
 - Kiến trúc: Bi RNN và Transformer.
 - Danh sách thành viên và công việc:

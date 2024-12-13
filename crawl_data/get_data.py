@@ -45,10 +45,10 @@ def get_comments(driver, url):
 
         # Only write the header if the file is empty
         if file.tell() == 0:
-            writer.writerow(['URL', 'Content'])  # Write header
+            writer.writerow(['vi_review'])  # Write header
 
         for i in d:
             k = i.get_attribute('textContent')
             print(k)
-            writer.writerow([url, k])
+            writer.writerow([k])
 

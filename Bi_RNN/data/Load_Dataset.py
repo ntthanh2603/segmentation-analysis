@@ -2,7 +2,7 @@ import pandas as pd
 import torch
 from torch.utils.data import Dataset
 
-class IMDBDataset(Dataset):
+class LoadDataset(Dataset):
     """Load dataset from file csv"""
     def __init__(self, vocab, csv_fpath=None, tokenized_fpath=None):
         """

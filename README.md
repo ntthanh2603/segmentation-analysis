@@ -74,4 +74,6 @@ chuẩn hóa từ tiếng việt, chuẩn hóa câu, loại bỏ link, loại b�
 - Bi-RNN (với LSTM) với 95.26% độ chính xác vẫn là một phương pháp mạnh mẽ và hiệu quả, đặc biệt khi tài nguyên huấn luyện hạn chế. Khó khăn khi chuỗi dài và có tốc độ huấn luyện chậm hơn khi số lượng layer tăng.
 - Kết quả mang lại thể hiện hiệu quả của các mô hình deep learning trong bài toán phân tích cảm xúc và góp phần đóng góp thực tiễn cho phát triển các ứng dụng NLP.
 
-#### Thanks for watching!!!
+#### Trong dự án có gì sai sót hay cần cải tiến hay nếu có thắc mắc gì mong bạn đóng góp ý vào issuas của repo này ạ☺☺☺.
+
+![#### Thanks for watching!!!](img/thanks-for-watching.jpeg)

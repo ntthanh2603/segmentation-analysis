@@ -29,6 +29,7 @@ chuẩn hóa từ tiếng việt, chuẩn hóa câu, loại bỏ link, loại b�
 #### Training:
 
 - Transformer:
+
   - Ta sẽ tinh chỉnh và đánh giá 2 mô hình transformers chỉ sử dụng bộ Encode với tập dữ liệu trên cho bài toán phân loại cảm xúc. 2 mô hình được sử dụng là DistilBERT-base và PhoBERT-base.
   - Phần cứng được sử dụng trong quá trình tinh chỉnh là 2 GPU T4 trên môi trường của Kaggle, các mô hình sẽ được đánh giá thông qua 2 thang đo là độ chính xác và điểm số F1 trên bộ validation.
     ![Image alt text](img/config-tranformer.png)
@@ -36,6 +37,32 @@ chuẩn hóa từ tiếng việt, chuẩn hóa câu, loại bỏ link, loại b�
     ![Image alt text](img/result-tranformer.jpg)
   - Sau khi tinh chỉnh, ta thấy với batch size nhỏ thì kết quả trả về chính xác hơn nhưng đồng thời thời gian huấn luyện cũng lâu hơn. Mô hình PhoBERT cho ra kết quả tốt hơn so với distilBERT là bởi PhoBERT là mô hình được pre-trained trên bộ dữ liệu tiếng Việt.Do hạn chế về tài nguyên huấn luyện nên ta chỉ có thể đánh giá 2 mô hình trên.
     ![Image alt text](img/loss-phoBERT.png)
+
+- Bi-RNN:
+  - Tham số về mô hình : - Lớp embedding : input_dimension = vocab_size = 1585076, embedding_dimension = 100
+  - Drop out = 0,5
+  - Lớp hidden : sử dụng bidirectional
+    - thử nghiệm trên 2 lớp LSTM hoặc 3 lớp LSTM
+    - hidden_dimension = 100
+  - Hyperparameters :
+    - Optimizer : thử nghiệm bằng Adam hoặc SGD
+    - Patch size : 16, 64, 100
+    - Momentum ( đối với SGD) : 0,9
+    - Learning rate :
+      - Đối với Adam : mặc định
+      - Đối với SGD : thử với các learning rate khác nhau ( 0,1 ; 0,01 ; 0,001)
+  - Tiến hành training bằng x 2 GPU : T4 qua 5 epoch. Kết quả của việc tuning các hyperparameter :
+    ![Image alt text](img/BiRNN-with- 2class-LSTM.png)
+    ![Image alt text](img/BiRNN-with- 3class-LSTM.png)
+  - Giá trị loss tốt nhất của mô hình Bi-RNN ( batch size = 64, optimizer bằng adam)
+    ![Image alt text](img/loss-best-model-BiRNN.png)
+  - Nhận xét :
+    - Khi tăng batch size lên dẫn đến thời gian training giảm
+    - Tăng learning rate thì acc của mô hình tăng lên ( đối với optimizer bằng SGD)
+    - Phương pháp optimizer bằng Adam tốt hơn SGD
+    - Khi mô hình ở batch size = 64 cho ra kết quả tốt nhất so với các batch size khác
+    - Mô hình với 3 lớp hidden layer sẽ cho acc cao hơn mô hình với 2 lớp hidden layer
+    - Như vậy từ bảng trên có thể thấy rằng, mô hình có acc cao nhất là 95,09% khi mà mô hình có 3 lớp LSTM ở hidden layer , batch size = 64 và optimizer bằng adam
 
 #### Kết luận chung:
 

@@ -8,11 +8,11 @@ Trong bài báo cáo, chúng em đã thực hiện phân tích và so sánh hai 
 
 #### Danh sách thành viên và công việc:
 
-- Nguyễn Tuấn Thành - 22022624: Dùng Selenium và Pyautogui để thu thập và dùng pandas để trực quan và làm sạch dữ liệu.
-- Vũ Đình Thọ - 22022580: Xây dựng kiến trúc và huấn luyện model Transformer.
-- Đinh Văn Sinh - 22022625: Viết báo cáo, tổng hợp nội dung.
-- Nguyễn Mạnh Hùng - 22022623: Xây dựng kiến trúc và huấn luyện model dùng Bi RNN.
-- Nguyễn Công Thành - 22022630: Gán nhãn dữ liệu.
+- Nguyễn Tuấn Thành - 22022624.
+- Vũ Đình Thọ - 22022580.
+- Đinh Văn Sinh - 22022625.
+- Nguyễn Mạnh Hùng - 22022623.
+- Nguyễn Công Thành - 22022630.
 
 #### Mục Tiêu
 

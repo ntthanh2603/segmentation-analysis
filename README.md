@@ -14,7 +14,7 @@ Trong bài báo cáo, chúng em đã thực hiện phân tích và so sánh hai 
 - Nguyễn Mạnh Hùng - 22022623.
 - Nguyễn Công Thành - 22022630.
 
-#### Mục Tiêu
+#### Mục Tiêu:
 
 - Xây dựng và triển khai mô hình: Phát triển hai mô hình deep learning là Transformer và Bi-RNN để phân tích cảm xúc.
 - Đánh giá và so sánh: So sánh hiệu suất của hai mô hình thông qua các chỉ số như độ chính xác (Accuracy), F1-Score, độ chính xác (Precision) và độ nhạy (Recall).

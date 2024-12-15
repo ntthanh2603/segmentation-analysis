@@ -46,7 +46,7 @@ chuẩn hóa từ tiếng việt, chuẩn hóa câu, loại bỏ link, loại b�
     - hidden_dimension = 100
   - Hyperparameters :
     - Optimizer : thử nghiệm bằng Adam hoặc SGD
-    - Patch size : 16, 64, 100
+    - Batch size : 16, 64, 100
     - Momentum ( đối với SGD) : 0,9
     - Learning rate :
       - Đối với Adam : mặc định

@@ -6,7 +6,7 @@ Vì những vấn đề nêu trên, để phân loại 1 cách chính xác cần
 <br>
 Trong bài báo cáo, chúng em đã thực hiện phân tích và so sánh hai mô hình deep learning hiện đại là Transformer (PhoBERT, DistilBERT) và Bi-RNN (với các lớp LSTM) trong bài toán phân tích cảm xúc dựa trên đánh giá phim bằng tiếng Việt.
 
-#### Danh sách thành viên và công việc:
+#### Danh sách thành viên:
 
 - Nguyễn Tuấn Thành - 22022624.
 - Vũ Đình Thọ - 22022580.

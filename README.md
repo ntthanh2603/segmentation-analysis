@@ -10,7 +10,7 @@ Trong bài báo cáo, chúng em đã thực hiện phân tích và so sánh hai 
 
 - Nguyễn Tuấn Thành - 22022624.
 - Vũ Đình Thọ - 22022580.
-- Đinh Văn Sinh - 22022625.
+- Đinh Văn Sinh - 22022615.
 - Nguyễn Mạnh Hùng - 22022623.
 - Nguyễn Công Thành - 22022630.
 

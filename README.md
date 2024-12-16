@@ -39,11 +39,12 @@ chuẩn hóa từ tiếng việt, chuẩn hóa câu, loại bỏ link, loại b�
     ![Image alt text](img/loss-phoBERT.png)
 
 - Bi-RNN:
-  - Tham số về mô hình : - Lớp embedding : input_dimension = vocab_size = 1585076, embedding_dimension = 100
-  - Drop out = 0,5
-  - Lớp hidden : sử dụng bidirectional
-    - thử nghiệm trên 2 lớp LSTM hoặc 3 lớp LSTM
-    - hidden_dimension = 100
+  - Tham số về mô hình :
+    - Lớp embedding : input_dimension = vocab_size = 1585076, embedding_dimension = 100
+    - Drop out = 0,5
+    - Lớp hidden : sử dụng bidirectional
+      - thử nghiệm trên 2 lớp LSTM hoặc 3 lớp LSTM
+      - hidden_dimension = 100
   - Hyperparameters :
     - Optimizer : thử nghiệm bằng Adam hoặc SGD
     - Batch size : 16, 64, 100

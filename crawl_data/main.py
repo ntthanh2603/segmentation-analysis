@@ -16,7 +16,7 @@ def main():
   time.sleep(random.randint(8, 10))
   print(">> Login successful")
 
-  for page_index in range(20, df_posts.shape[0]):
+  for page_index in range(df_posts.shape[0]):
     url = df_posts["url"][page_index]
     
     get_comments(driver, url)

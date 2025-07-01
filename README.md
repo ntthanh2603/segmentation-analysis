@@ -1,80 +1,82 @@
 ## Project segmentation-analysis
 
-Phân loại cảm xúc bình luận hiểu rõ hơn sự đón nhận của khán giả, hỗ trợ các nhà làm phim, nền tảng phát trực tuyến và nhà tiếp thị đưa ra quyết định (cắt, thêm suất chiếu, thực hiện các cơ hội hay chiến dịch nhanh chóng, đón đầu xu thế). Việc phân loại cảm xúc sẽ gặp 1 số vấn đề: ngôn ngữ đánh giá phim mang tính ẩn dụ cao, ngữ cảnh không rõ ràng, …
-Vì những vấn đề nêu trên, để phân loại 1 cách chính xác cần áp dụng các kỹ thuật Xử lý Ngôn ngữ Tự nhiên (NLP) tốt nhằm nắm bắt ngôn ngữ tinh tế hơn.
+Sentiment classification of comments provides better understanding of audience reception, supporting filmmakers, streaming platforms, and marketers in making decisions (cutting, adding showtimes, implementing opportunities or campaigns quickly, staying ahead of trends). Sentiment classification faces several challenges: film review language is highly metaphorical, unclear context, etc.
+
+Due to the issues mentioned above, accurate classification requires applying good Natural Language Processing (NLP) techniques to capture more subtle language nuances.
+
 ![Image alt text](img/sentiment-analysis.png)
 <br>
-Trong bài báo cáo, chúng em đã thực hiện phân tích và so sánh hai mô hình deep learning hiện đại là Transformer (PhoBERT, DistilBERT) và Bi-RNN (với các lớp LSTM) trong bài toán phân tích cảm xúc dựa trên đánh giá phim bằng tiếng Việt.
 
-#### Danh sách thành viên:
+In this report, we conducted analysis and comparison of two modern deep learning models: Transformer (PhoBERT, DistilBERT) and Bi-RNN (with LSTM layers) for sentiment analysis based on Vietnamese movie reviews.
 
-- Nguyễn Tuấn Thành - 22022624.
-- Vũ Đình Thọ - 22022580.
-- Đinh Văn Sinh - 22022615.
-- Nguyễn Mạnh Hùng - 22022623.
-- Nguyễn Công Thành - 22022630.
+#### Team Members:
 
-#### Mục Tiêu:
+- Nguyen Tuan Thanh - 22022624
+- Vu Dinh Tho - 22022580
+- Dinh Van Sinh - 22022615
+- Nguyen Manh Hung - 22022623
+- Nguyen Cong Thanh - 22022630
 
-- Xây dựng và triển khai mô hình: Phát triển hai mô hình deep learning là Transformer và Bi-RNN để phân tích cảm xúc.
-- Đánh giá và so sánh: So sánh hiệu suất của hai mô hình thông qua các chỉ số như độ chính xác (Accuracy), F1-Score, độ chính xác (Precision) và độ nhạy (Recall).
-- Ứng dụng thực tiễn: Ứng dụng kết quả phân tích vào các lĩnh vực như quản lý phản hồi khách hàng, theo dõi đánh giá sản phẩm hoặc giám sát cảm xúc trên mạng xã hội.
+#### Objectives:
+
+- Build and deploy models: Develop two deep learning models - Transformer and Bi-RNN for sentiment analysis.
+- Evaluate and compare: Compare the performance of both models through metrics such as Accuracy, F1-Score, Precision, and Recall.
+- Practical applications: Apply analysis results to fields such as customer feedback management, product review monitoring, or social media sentiment surveillance.
 
 #### Data:
 
-Là các bình luận của các bài viết trên facebook được thu thập bằng thư viện Selenium và Pyautogui.
-Và dùng Pandas và các thư viện hỗ trợ như emoji, unicodedata, regex, pyvi để chuyển data thành chữ thường, tách từ tiếng việt,
-chuẩn hóa từ tiếng việt, chuẩn hóa câu, loại bỏ link, loại bỏ số, loại bỏ các icon và trực quan hóa dữ liệu.
+Comments from Facebook posts collected using Selenium and PyAutoGUI libraries.
+Using Pandas and supporting libraries like emoji, unicodedata, regex, pyvi to convert data to lowercase, Vietnamese word segmentation, Vietnamese word normalization, sentence normalization, link removal, number removal, icon removal, and data visualization.
 
 #### Training:
 
 - Transformer:
 
-  - Ta sẽ tinh chỉnh và đánh giá 2 mô hình transformers chỉ sử dụng bộ Encode với tập dữ liệu trên cho bài toán phân loại cảm xúc. 2 mô hình được sử dụng là DistilBERT-base và PhoBERT-base.
-  - Phần cứng được sử dụng trong quá trình tinh chỉnh là 2 GPU T4 trên môi trường của Kaggle, các mô hình sẽ được đánh giá thông qua 2 thang đo là độ chính xác và điểm số F1 trên bộ validation.
+  - We will fine-tune and evaluate 2 transformer models using only the Encoder set with the above dataset for sentiment classification. The 2 models used are DistilBERT-base and PhoBERT-base.
+  - Hardware used during fine-tuning is 2 T4 GPUs on Kaggle environment. Models will be evaluated through 2 metrics: accuracy and F1 score on the validation set.
     ![Image alt text](img/config-tranformer.png)
-  - Các mô hình được tinh chỉnh với learning rate là 2e-5 trong 5 epochs, sử dụng optimizer AdamW và batch size được tùy chỉnh theo như bảng dưới đây.
+  - Models are fine-tuned with learning rate of 2e-5 for 5 epochs, using AdamW optimizer and batch size customized according to the table below.
     ![Image alt text](img/result-tranformer.jpg)
-  - Sau khi tinh chỉnh, ta thấy với batch size nhỏ thì kết quả trả về chính xác hơn nhưng đồng thời thời gian huấn luyện cũng lâu hơn. Mô hình PhoBERT cho ra kết quả tốt hơn so với distilBERT là bởi PhoBERT là mô hình được pre-trained trên bộ dữ liệu tiếng Việt.Do hạn chế về tài nguyên huấn luyện nên ta chỉ có thể đánh giá 2 mô hình trên.
+  - After fine-tuning, we found that smaller batch sizes return more accurate results but training time is also longer. PhoBERT model performs better than DistilBERT because PhoBERT is pre-trained on Vietnamese datasets. Due to training resource limitations, we could only evaluate these 2 models.
     ![Image alt text](img/loss-phoBERT.png)
 
 - Bi-RNN:
-  - Tham số về mô hình :
-    - Lớp embedding : input_dimension = vocab_size = 1585076, embedding_dimension = 100
-    - Drop out = 0,5
-    - Lớp hidden : sử dụng bidirectional
-      - thử nghiệm trên 2 lớp LSTM hoặc 3 lớp LSTM
+  - Model parameters:
+    - Embedding layer: input_dimension = vocab_size = 1585076, embedding_dimension = 100
+    - Dropout = 0.5
+    - Hidden layer: using bidirectional
+      - Experiments on 2 LSTM layers or 3 LSTM layers
       - hidden_dimension = 100
-  - Hyperparameters :
-    - Optimizer : thử nghiệm bằng Adam hoặc SGD
-    - Batch size : 16, 64, 100
-    - Momentum ( đối với SGD) : 0,9
-    - Learning rate :
-      - Đối với Adam : mặc định
-      - Đối với SGD : thử với các learning rate khác nhau ( 0,1 ; 0,01 ; 0,001)
-  - Tiến hành training bằng x 2 GPU : T4 qua 5 epoch. Kết quả của việc tuning các hyperparameter :
+  - Hyperparameters:
+    - Optimizer: experiments with Adam or SGD
+    - Batch size: 16, 64, 100
+    - Momentum (for SGD): 0.9
+    - Learning rate:
+      - For Adam: default
+      - For SGD: experiments with different learning rates (0.1; 0.01; 0.001)
+  - Training conducted using 2 T4 GPUs over 5 epochs. Results of hyperparameter tuning:
     ![Image alt text](img/BiRNN-with- 2class-LSTM.png)
     ![Image alt text](img/BiRNN-with- 3class-LSTM.png)
-  - Giá trị loss tốt nhất của mô hình Bi-RNN ( batch size = 64, optimizer bằng adam)
+  - Best loss value of Bi-RNN model (batch size = 64, optimizer = adam)
     ![Image alt text](img/loss-best-model-BiRNN.png)
-  - Nhận xét :
-    - Khi tăng batch size lên dẫn đến thời gian training giảm
-    - Tăng learning rate thì acc của mô hình tăng lên ( đối với optimizer bằng SGD)
-    - Phương pháp optimizer bằng Adam tốt hơn SGD
-    - Khi mô hình ở batch size = 64 cho ra kết quả tốt nhất so với các batch size khác
-    - Mô hình với 3 lớp hidden layer sẽ cho acc cao hơn mô hình với 2 lớp hidden layer
-    - Như vậy từ bảng trên có thể thấy rằng, mô hình có acc cao nhất là 95,09% khi mà mô hình có 3 lớp LSTM ở hidden layer , batch size = 64 và optimizer bằng adam
+  - Observations:
+    - Increasing batch size leads to reduced training time
+    - Increasing learning rate improves model accuracy (for SGD optimizer)
+    - Adam optimizer performs better than SGD
+    - Model with batch size = 64 gives best results compared to other batch sizes
+    - Model with 3 hidden layers achieves higher accuracy than model with 2 hidden layers
+    - From the table above, the model with highest accuracy is 95.09% when the model has 3 LSTM layers in hidden layer, batch size = 64, and optimizer = adam
 
-#### Kết luận chung:
+#### General Conclusion:
 
 ![Image alt text](img/transformer-birnn.png)
 
-- Bi-RNN vượt trội hơn Transformer trong cả F1-Score (95,14% so với 90,93%) và Accuracy (95,09% so với 90,7%), với mức chênh lệch khoảng 4%. Điều này cho thấy Bi-RNN phù hợp hơn với bài toán với bộ dữ liệu đã cho
-- Transformer có thể chưa phát huy tối đa tiềm năng, có thể do chưa được tối ưu siêu tham số hoặc dữ liệu không đủ lớn.
-- PhoBERT (Transformer) với độ chính xác cao nhất 90.93% là lựa chọn phù hợp cho các bài toán xử lý ngôn ngữ tiếng Việt nhờ khả năng xử lý toàn cục và hiệu suất cao, đặc biệt trong các tập dữ liệu phức tạp. Nhưng hạn chế khi thời gian huấn luyện của dài hơn so với Bi-RNN khi batch size tăng.
-- Bi-RNN (với LSTM) với 95.26% độ chính xác vẫn là một phương pháp mạnh mẽ và hiệu quả, đặc biệt khi tài nguyên huấn luyện hạn chế. Khó khăn khi chuỗi dài và có tốc độ huấn luyện chậm hơn khi số lượng layer tăng.
-- Kết quả mang lại thể hiện hiệu quả của các mô hình deep learning trong bài toán phân tích cảm xúc và góp phần đóng góp thực tiễn cho phát triển các ứng dụng NLP.
+- Bi-RNN outperforms Transformer in both F1-Score (95.14% vs 90.93%) and Accuracy (95.09% vs 90.7%), with approximately 4% difference. This shows that Bi-RNN is more suitable for this problem with the given dataset.
+- Transformer may not have reached its full potential, possibly due to insufficient hyperparameter optimization or insufficient data size.
+- PhoBERT (Transformer) with highest accuracy of 90.93% is a suitable choice for Vietnamese language processing tasks thanks to its global processing capability and high performance, especially in complex datasets. However, it has limitations when training time is longer compared to Bi-RNN when batch size increases.
+- Bi-RNN (with LSTM) with 95.26% accuracy remains a powerful and effective method, especially when training resources are limited. Challenges include long sequences and slower training speed when number of layers increases.
+- Results demonstrate the effectiveness of deep learning models in sentiment analysis problems and contribute practically to the development of NLP applications.
 
-#### Trong dự án có gì sai sót hay cần cải tiến hay nếu có thắc mắc gì mong bạn đóng góp ý vào issuas của repo này ạ :)).
+#### If there are any errors or improvements needed in the project, or if you have any questions, please contribute your ideas to the issues section of this repo :)).
 
 ![#### Thanks for watching!!!](img/thanks-for-watching.jpeg)
